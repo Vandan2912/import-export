@@ -31,7 +31,7 @@ const Header = () => {
 
         <nav className="nav">
           <a href="#">HOME</a>
-          <a href="#">ABOUT US</a>
+          <a href="about-us">ABOUT US</a>
           <a href="#">PRODUCTS</a>
           <a href="#">PROCESS</a>
           <a href="#">CERTIFICATES</a>

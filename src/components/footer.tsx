@@ -1,5 +1,6 @@
 // src/components/ContactAndFooter.tsx
 import styles from "@/styles/footer.module.css";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -9,7 +10,9 @@ export default function Footer() {
           <h4>MENU</h4>
           <ul>
             <li>HOME</li>
-            <li>ABOUT US</li>
+            <li>
+              <Link href="about-us">ABOUT US</Link>
+            </li>
             <li>PRODUCTS</li>
             <li>PROCESS</li>
             <li>HARVEST CHART</li>
