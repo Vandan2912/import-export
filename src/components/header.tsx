@@ -1,8 +1,27 @@
 "use client";
-import React, { useEffect } from "react";
-import "@/styles/header.css";
+import React, { useEffect, useState } from "react";
+import styles from "@/styles/Header.module.css";
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+  const [openSecond, setOpenSecond] = useState(false);
+
+  const productMap: Record<string, string[]> = {
+    SPICES: [
+      "CUMIN SEEDS",
+      "CORIANDER SEEDS",
+      "FENNEL SEEDS",
+      "FENUGREEK SEEDS",
+      "TURMERIC",
+      "CHILLIES",
+      "DILL SEEDS",
+      "KALONJI SEEDS",
+      "AJWAIN SEEDS",
+    ],
+    "OIL SEEDS": ["SESAME SEEDS", "GROUNDNUTS", "CASTOR", "MUSTARD"],
+    HERBS: ["PSYLLIUM", "MORINGA", "TULSI", "AMLA"],
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const header = document.getElementById("site-header");
@@ -19,26 +38,64 @@ const Header = () => {
   }, []);
 
   return (
-    <header id="site-header" className="header">
-      <div className="container">
-        <div className="logo">
-          <img src="/logo.png" alt="OM EXIM Corporation" />
-          {/* <div className="logo-text">
+    <>
+      <header id="site-header" className={styles.header}>
+        <div className={styles.container}>
+          <div className={styles.logo}>
+            <img src="/logo.png" alt="OM EXIM Corporation" />
+            {/* <div className="logo-text">
             <h1>OM EXIM Corporation</h1>
             <span>An ISO 22000:2005 Certified Company</span>
-          </div> */}
-        </div>
+            </div> */}
+          </div>
 
-        <nav className="nav">
-          <a href="#">HOME</a>
-          <a href="about-us">ABOUT US</a>
-          <a href="#">PRODUCTS</a>
-          <a href="#">PROCESS</a>
-          <a href="#">CERTIFICATES</a>
-          <a href="#">CONTACT</a>
-        </nav>
-      </div>
-    </header>
+          <nav className={styles.nav}>
+            <a href="#" onMouseEnter={() => setOpen(false)}>
+              HOME
+            </a>
+            <a href="about-us" onMouseEnter={() => setOpen(false)}>
+              ABOUT US
+            </a>
+            {/* PRODUCTS BUTTON */}
+            <div className={styles.productsContainer}>
+              <button className={styles.productsBtn} onClick={() => setOpen(!open)} onMouseEnter={() => setOpen(true)}>
+                PRODUCTS
+              </button>
+              {open && (
+                <div className={`${styles.drawer} ${open ? styles.open : ""}`} onMouseLeave={() => setOpen(false)}>
+                  <ul>
+                    <li>
+                      <a href="/categories/spices">Spices</a>
+                    </li>
+                    <li>
+                      <a href="/categories/oil-seeds">Oil Seeds</a>
+                    </li>
+                    <li>
+                      <a href="/categories/herbs">Herbs</a>
+                    </li>
+                    <li>
+                      <a href="/categories/grains">Grains</a>
+                    </li>
+                    <li>
+                      <a href="/categories/dehydrated">Dehydrated</a>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+            <a href="#" onMouseEnter={() => setOpen(false)}>
+              PROCESS
+            </a>
+            <a href="#" onMouseEnter={() => setOpen(false)}>
+              CERTIFICATES
+            </a>
+            <a href="#" onMouseEnter={() => setOpen(false)}>
+              CONTACT
+            </a>
+          </nav>
+        </div>
+      </header>
+    </>
   );
 };
 
