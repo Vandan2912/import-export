@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from "tailwindcss";
+
+const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -79,7 +80,14 @@ module.exports = {
           "100%": { transform: "scale(1)", opacity: "1" },
         },
       },
+      fontFamily: {
+        campuni: ["Campuni", "sans-serif"],
+        faible: ["Faible", "sans-serif"],
+        poppins: ["var(--font-poppins)"],
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
+
+export default config;
